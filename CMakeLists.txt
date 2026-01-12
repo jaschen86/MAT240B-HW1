@@ -12,3 +12,4 @@ add_executable(sine-sweep sine-sweep.cpp)
 ## Add lines here to make new executable targets
 add_executable(impulse impulse.cpp)
 add_executable(sawtooth sawtooth.cpp)
+add_executable(square square.cpp)
