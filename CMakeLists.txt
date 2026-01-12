@@ -10,4 +10,4 @@ add_executable(wav-read wav-read.cpp)
 add_executable(sine-sweep sine-sweep.cpp)
 
 ## Add lines here to make new executable targets
-#add_executable(impulse-sweep impulse-sweep.cpp)
+add_executable(impulse impulse.cpp)
