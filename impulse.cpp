@@ -1,6 +1,6 @@
 #include "everything.h"
 
-#define INIT_FREQUENCY 1000.0
+#define INIT_FREQUENCY 440.0
 #define TIME_SEC 2
 
 double impulse(double initial_frequency, long sample_index) {
@@ -11,7 +11,7 @@ double impulse(double initial_frequency, long sample_index) {
 
     for (int n = 1; n <= N; n++) {
         double phase = 2.0 * n * pi * t * initial_frequency;
-        sum += sin(phase);
+        sum += sin(phase) / N;
     }
     return sum;
 }
