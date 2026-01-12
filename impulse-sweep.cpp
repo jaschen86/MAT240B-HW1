@@ -1,7 +1,8 @@
 #include "everything.h"
 
-#define INIT_FREQUENCY 440.0
-#define TIME_SEC 2
+#define TIME_SEC 0.5
+#define NOTE_MAX 127.0
+#define NOTE_INTERVAL 1
 
 double impulse(double initial_frequency, long sample_index) {
     double sum = 0.0;
@@ -13,13 +14,18 @@ double impulse(double initial_frequency, long sample_index) {
         double phase = 2.0 * n * pi * t * initial_frequency;
         sum += sin(phase);
     }
-    return sum /N;
+    return sum / N;
 }
 
 int main() {
 
     for (long t = 0; t < TIME_SEC * SAMPLE_RATE; t++) {
-        mono(impulse(INIT_FREQUENCY, t));
+        double sum = 0.0;
+        for (float note = NOTE_MAX; note > 0; note-=NOTE_INTERVAL) {
+            float freq = mtof(note);
+            sum += impulse(freq, t);
+        }
+        mono(sum / NOTE_MAX);
     }
 
     return 0;
